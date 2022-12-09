@@ -22,8 +22,14 @@ case class V3(x: Double, y: Double, z: Double) {
   def dropZ: V2 = V2(x, y)
 
   def length: Double = math.sqrt(x * x + y * y + z * z)
-
   def norm: V3 = this / V3(length, length, length)
+  def toHomoPoint:V4 = V4(x, y, z, 1)
+  def toHomoVector:V4 = V4(x, y, z , 0 )
 
+  def apply(i: Int): Double = i match {
+    case 0 => x
+    case 1 => y
+    case 2 => z
+  }
 }
 
